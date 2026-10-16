@@ -17,15 +17,24 @@ conversations it is displaying.
 ## Install
 
 ```sh
+# straight from GitHub
+dsh plugin --profile <your-profile> add github:ddaanntt/dsh-sound-notify
+
+# from npm (once published there)
 dsh plugin --profile <your-profile> add dsh-sound-notify
-```
 
-or from a tarball / checkout:
-
-```sh
+# from a tarball or a local checkout
 dsh plugin --profile <your-profile> add ./dsh-sound-notify-0.1.0.tgz
 dsh plugin --profile <your-profile> add ./dsh-sound-notify
 ```
+
+This package ships plain JavaScript and declares **no install scripts**, so pnpm runs no build
+step and no `allowBuilds` authorization is required — unlike a TypeScript plugin installed from
+git, which needs a `prepare` script plus your explicit approval to run it.
+
+If `git` cannot reach github.com from your network, the fetch fails before pnpm ever sees the
+package; point git at your proxy first (for example
+`git config --global http.proxy http://127.0.0.1:7897`), or install the tarball instead.
 
 Then **reload the browser page once**. The client half is delivered through the boot manifest,
 which is injected when the page is served — an already-open tab keeps running the old manifest
