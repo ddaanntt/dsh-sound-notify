@@ -1,0 +1,14 @@
+# This bundle's layer: it inserts one row into the host composition.
+# The row references the package by NAME (not a relative path) so Node's module
+# resolution finds the installed copy.
+- insert:
+    - id: sound-notify
+      name: dsh-sound-notify
+      config:
+        onTurnEnd: true
+        onUserInputNeeded: true
+        startupChime: false
+        minIntervalMs: 700
+        suppressTurnEndAfterAttentionMs: 5000
+        presenceTtlMs: 20000
+        debugLog: ''
